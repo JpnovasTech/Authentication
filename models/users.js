@@ -26,31 +26,37 @@ var User = new Schema({
         unique : true,
         require : false  
     },
-    address_road:{
-        type:String,
-        default : ''
+    address : {
+        address_road:{
+            type:String,
+            default : ''
+        },
+        address_taluka : {
+            type:String,
+            default : ''
+        },
+        address_Dist :{
+            type:String,
+            default : ''
+        },
+        address_state :{
+            type:String,
+            default : ''
+        },
+        address_pin : {
+            type: Number,
+            default : ''
+        }
     },
-    address_taluka : {
-        type:String,
-        default : ''
-    },
-    address_Dist :{
-        type:String,
-        default : ''
-    },
-    address_state :{
-        type:String,
-        default : ''
-    },
-    address_pin : {
-        type: Number,
-        default : ''
-    },
-    is_farmer :{
-        type : Boolean,
-        default : false
+    Role : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Role'
     }
-});
+},
+{
+    timestamps: true
+}
+);
 
 User.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User',User);
