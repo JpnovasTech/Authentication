@@ -22,6 +22,6 @@ app.use('/', index.router);
 
 
 const server = http.createServer(app);
-app.listen(port,hostname,()=>{
-    console.log(`server running on http://${hostname}:${port}`)
+app.listen(port,()=>{
+    console.log(`server running on port: ${port}`)
 })
