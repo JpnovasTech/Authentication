@@ -18,12 +18,7 @@ router.route("/register").post((req, res, next) => {
         firstname : req.body.firstname,
         lastname : req.body.lastname,
         email_id: req.body.email_id,
-        address_road:  req.body.address_road,
-        address_taluka : req.body.address_taluka,
-        address_Dist : req.body.address_Dist, 
-        address_state : req.body.address_state,
-        address_pin : req.body.address_pin,
-        is_farmer : false 
+        address : req.body.address
     };
     users
       .create(newUser)

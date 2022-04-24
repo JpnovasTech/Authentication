@@ -16,7 +16,7 @@ connect.then((db)=>{
 })
 
 const hostname='localhost';
-const port = 3000;
+const port = config.PORT;
 
 app.use('/', index.router);
 
