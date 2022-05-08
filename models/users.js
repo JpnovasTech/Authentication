@@ -49,8 +49,8 @@ var User = new Schema({
         }
     },
     Role : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Role'
+        type: String,
+        default: ''
     }
 },
 {

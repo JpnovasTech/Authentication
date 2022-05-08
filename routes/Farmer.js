@@ -8,9 +8,11 @@ const { verifyToken } = require("../middlewares/verifyToken");
 const router = express.Router();
 router.use(bodyParser.json());
 
-router.route("/join").post((req, res, next) => {
+router.route("/join").post(verifyToken, (req, res, next) => {
   console.log("Inside Join Farmer Club");
-  console.log(req.body.Pumpset.Solar)
+  console.log(req.payload)
+  // console.log(req.body.Pumpset.Solar)
+
     // let Data  = {
     //     mobile_number: req.body.mobile_number ,
     //     password: hash, 

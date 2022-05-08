@@ -37,8 +37,9 @@ router.route("/register").post((req, res, next) => {
 
 router.route("/login").post((req, res, next) => {
   console.log("Inside UserRouter Login");
+  console.log(req.body)
   users
-    .find({ mobile_number: req.body.mobile_number })
+    .find({ mobile_number: req.body.username })
     .then((data) => {
       bcrypt.compare(req.body.password, data[0].password, (error, verify) => {
         if (error) {
@@ -51,11 +52,13 @@ router.route("/login").post((req, res, next) => {
             message: "Wrong Username or Password",
           });
         } else {
+          console.log(data)
           jwt.sign(
             {
               userid: data[0]._id,
               mobile_number: data[0].mobile_number,
-              is_farmer : data[0].is_farmer
+              id : data[0]._id,
+              role : data[0].Role
             },
             config.secretKey,
             (error, token) => {
@@ -65,7 +68,7 @@ router.route("/login").post((req, res, next) => {
               } else {
                 // token generated
                 console.log("Token generated");
-                res.status(200).json({ token: token });
+                res.status(200).json({ token: token, role:data[0].Role });
               }
             }
           );
